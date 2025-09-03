@@ -103,7 +103,7 @@
   <nav class="navbar navbar-expand-lg">
     <div class="container-fluid">
       <a class="navbar-brand logo" href="#">
-        <img src="../Logo-Photoroom.png" alt="Logo">
+        <img src="Logo-Photoroom.png" alt="Logo">
       </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuNav">
         <span class="navbar-toggler-icon"></span>

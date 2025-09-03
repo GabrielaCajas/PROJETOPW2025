@@ -50,7 +50,7 @@ if ($res = $conn->query($sql)) {
 <nav class="navbar navbar-expand-lg" style="background-color:rgba(190, 160, 241, 0.81);">
     <div class="container-fluid px-4">
         <div class="d-flex align-items-center me-4">
-            <div class="logo"><img class="logo" src="../Logo-Photoroom.png" style="width: 80px; height: 80px;"></div>
+            <div class="logo"><img class="logo" src="Logo-Photoroom.png" style="width: 80px; height: 80px;"></div>
         </div>
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item"><a class="nav-link text-dark fw-medium" href="#">Eventos</a></li>
@@ -60,7 +60,7 @@ if ($res = $conn->query($sql)) {
         </ul>
         <div class="d-flex align-items-center gap-3">
             <i class="bi bi-person-circle fs-4"></i>
-            <input type="text" class="form-control form-control-sm" placeholder="Pesquisar" style="max-width: 200px; border-radius: 5px;">
+            <input type="text" class="form-control form-control-sm" placeholder="Pesquisar" >
             <i class="bi bi-list fs-4"></i>
         </div>
     </div>
@@ -88,25 +88,35 @@ Swal.fire({
     </a>
 
     <?php if (!empty($tarefas)): ?>
-        <ul class="list-group">
-            <?php foreach ($tarefas as $linha): ?>
-                <li class="list-group-item d-flex justify-content-between align-items-center">
-                    <span>
-                        <strong><?= htmlspecialchars($linha['nome']) ?></strong><br>
-                        <small>
-                            Início: <?= htmlspecialchars($linha['data_inicio']) ?> | 
-                            Fim: <?= htmlspecialchars($linha['data_fim']) ?> | 
-                            Tempo diário: <?= htmlspecialchars($linha['tempo_diario']) ?>h
-                        </small>
-                    </span>
-                    <span class="badge bg-primary rounded-pill">#<?= $linha['id'] ?></span>
-                </li>
-            <?php endforeach; ?>
-        </ul>
-    <?php else: ?>
-        <div class="alert alert-warning">Nenhuma tarefa cadastrada.</div>
-    <?php endif; ?>
-</div>
+    <div class="row">
+        <?php foreach ($tarefas as $linha): ?>
+            <div class="col-md-4 mb-3">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            <?= htmlspecialchars($linha['nome']) ?>
+                        </h5>
+                        <p class="card-text">
+                            <small>
+                                <strong>Início:</strong> <?= htmlspecialchars($linha['data_inicio']) ?><br>
+                                <strong>Fim:</strong> <?= htmlspecialchars($linha['data_fim']) ?><br>
+                                <strong>Tempo diário:</strong> <?= htmlspecialchars($linha['tempo_diario']) ?>h
+                            </small><br><br>
+                            <a class="btn btn-outline-danger"
+                            href="../excluirTarefas.php?idTarefa=<?= urlencode($linha['id']) ?>"
+                            onclick="return confirm('Tem certeza que deseja excluir esta tarefa?');" style="">
+                            Excluir
+                            </a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        <?php endforeach; ?>
+    </div>
+<?php else: ?>
+    <div class="alert alert-warning">Nenhuma tarefa cadastrada.</div>
+<?php endif; ?>
+
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>

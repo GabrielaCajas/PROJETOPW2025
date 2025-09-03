@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg" style="background-color:rgba(190, 160, 241, 0.81);">
     <div class="container-fluid px-4">
         <div class="d-flex align-items-center me-4">
-            <div class="logo"><img class="logo" src="../Logo-Photoroom.png" style="width:  80px; height: 80px;"></div>
+            <div class="logo"><img class="logo" src="Logo-Photoroom.png" style="width:  80px; height: 80px;"></div>
         </div>
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item"><a class="nav-link text-dark fw-medium" href="#">Eventos</a></li>
