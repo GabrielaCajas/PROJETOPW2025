@@ -1,0 +1,20 @@
+<?php
+include 'db.php';
+$conn = conectarBanco();
+
+$id    = $_POST['id'];
+$nome  = $_POST['nome'];
+$ini   = $_POST['data_inicio'];
+$fim   = $_POST['data_fim'];
+$tempo = $_POST['tempo_diario'];
+
+$stmt = $conn->prepare("UPDATE tarefas SET nome=?, data_inicio=?, data_fim=?, tempo_diario=? WHERE id=?");
+$stmt->bind_param("ssssi", $nome, $ini, $fim, $tempo, $id);
+
+if($stmt->execute()){
+    header("Location: editaTarefa.php?idTarefa=$id&sucesso=1");
+    exit;
+} else {
+    echo "Erro ao atualizar: " . $stmt->error;
+}
+?>

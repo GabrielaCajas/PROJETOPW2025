@@ -101,7 +101,14 @@ Swal.fire({
                                 <strong>Início:</strong> <?= htmlspecialchars($linha['data_inicio']) ?><br>
                                 <strong>Fim:</strong> <?= htmlspecialchars($linha['data_fim']) ?><br>
                                 <strong>Tempo diário:</strong> <?= htmlspecialchars($linha['tempo_diario']) ?>h
-                            </small><br><br>
+                                </small>
+                            <p>
+
+                            <a class="btn btn-outline-primary"
+                            href="../editaTarefa.php?idTarefa=<?= urlencode($linha['id']) ?>">
+                            Editar
+                            </a>
+
                             <a class="btn btn-outline-danger"
                             href="../excluirTarefas.php?idTarefa=<?= urlencode($linha['id']) ?>"
                             onclick="return confirm('Tem certeza que deseja excluir esta tarefa?');" style="">
